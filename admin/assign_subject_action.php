@@ -69,7 +69,7 @@ if(isset($_POST["action"]))
 			$sub_array = array();
 			$sub_array[] = html_entity_decode($row["class_name"]);
 			$sub_array[] = html_entity_decode($row["subject_name"]);
-			$sub_array[] = $row["added_on"];
+			$sub_array[] = date('d-M-Y, h:i a', strtotime($row["added_on"]));
 			$sub_array[] = '
 			<div align="center">
 			<button type="button" name="edit_button" class="btn btn-warning  btn-sm edit_button" data-id="'.$row["subject_to_class_id"].'"><i class="fas fa-edit"></i></button>

@@ -74,9 +74,9 @@ if(isset($_POST["action"]))
 			$sub_array[] = html_entity_decode($row["student_email_id"]);
 			$sub_array[] = $row["student_password"];
 			$sub_array[] = $row["student_gender"];
-			$sub_array[] = $row["student_dob"];
+			$sub_array[] = date('d-M-Y', strtotime($row["student_dob"]));
 			$sub_array[] = $row["student_added_by"];
-			$sub_array[] = $row["student_added_on"];
+			$sub_array[] = date('d-M-Y, h:i a', strtotime($row["student_added_on"]));
 			$status = '';
 			if($row["student_status"] == 'Enable')
 			{
@@ -139,7 +139,7 @@ if(isset($_POST["action"]))
 				':student_name'			=>	$object->clean_input($_POST["student_name"]),
 				':student_address'		=>	$object->clean_input($_POST["student_address"]),
 				':student_email_id'		=>	$_POST["student_email_id"],
-				':student_password'		=>	$_POST["student_password"],
+				':student_password'		=>	sha1($_POST["student_password"]),
 				':student_gender'		=>	$_POST["student_gender"],
 				':student_dob'			=>	$_POST["student_dob"],
 				':student_image'		=>	$student_image,

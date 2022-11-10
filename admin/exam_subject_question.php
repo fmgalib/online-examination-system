@@ -30,7 +30,7 @@ WHERE exam_id = '".$_GET["exam_id"]."'
 ";
 
 $checkResult = $object->get_result();
-//$checkResult = $object->fetchAll($checkResult);
+
 //print_r($checkResult);
 //exit();
 
@@ -39,6 +39,7 @@ include('header.php');
 ?>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Exam Course Question Management</h1>
+                    <h5> <?php echo '<b>Exam Name: </b>' . $_GET["exam_title"] . '<br>' . '<b>Course Name: </b>' . $_GET["subject_name"]?> </h5>
 
                     <!-- DataTales Example -->
                     <span id="message"></span>
@@ -65,8 +66,8 @@ include('header.php');
                                 <table class="table table-bordered" id="exam_subject_question_table" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Exam Name</th>
-                                            <th>Course</th>
+<!--                                            <th>Exam Name</th>-->
+<!--                                            <th>Course</th>-->
                                             <th>Question</th>
                                             <th>Option 1</th>
                                             <th>Option 2</th>
@@ -98,31 +99,33 @@ include('header.php');
         		</div>
         		<div class="modal-body">
         			<span id="form_message"></span>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Exam Name</label>
-                        <div class="col-sm-9">
-                            <select name="exam_id" id="exam_id" class="form-control" required>
-                                <option value="">Select Exam</option>
-                                <?php
-
-                                foreach($result as $row)
-                                {
-                                    echo '
-                                    <option value="'.$row["exam_id"].'">'.$row["exam_title"].'</option>
-                                    ';
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Course</label>
-                        <div class="col-sm-9">
-                            <select name="exam_subject_id" id="exam_subject_id" class="form-control" required>
-                                <option value="">Select Course</option>
-                            </select>
-                        </div>
-                    </div>
+<!--                    <div class="form-group row">-->
+<!--                        <label class="col-sm-3 col-form-label">Exam Name</label>-->
+<!--                        <div class="col-sm-9">-->
+<!--                            <select name="exam_id" id="exam_id" class="form-control" required>-->
+<!--                                <option value="">Select Exam</option>-->
+<!--                                --><?php
+//
+//                                foreach($result as $row)
+//                                {
+//                                    echo '
+//                                    <option value="'.$row["exam_id"].'">'.$row["exam_title"].'</option>
+//                                    ';
+//                                }
+//                                ?>
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <input type="hidden" name="exam_id" id="exam_id" value="<?php echo $_GET["exam_id"]?>">
+                    <input type="hidden" name="exam_subject_id" id="exam_subject_id" value="<?php echo $_GET["exam_subject_id"]?>">
+<!--                    <div class="form-group row">-->
+<!--                        <label class="col-sm-3 col-form-label">Course</label>-->
+<!--                        <div class="col-sm-9">-->
+<!--                            <select name="exam_subject_id" id="exam_subject_id" class="form-control" required>-->
+<!--                                <option value="">Select Course</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Question Title</label>
                         <div class="col-sm-9">
@@ -194,27 +197,27 @@ $(document).ready(function(){
 		},
 		"columnDefs":[
 			{
-				"targets":[3, 4, 5, 6, 7, 8],
+				"targets":[3, 4, 5, 6],
 				"orderable":false,
 			},
 		],
 	});
 
-    $('#exam_id').change(function(){
-        var exam_id = $('#exam_id').val();
-        if(exam_id != '')
-        {
-            $.ajax({
-                url:"exam_subject_question_action.php",
-                method:"POST",
-                data:{action:'fetch_subject', exam_id:exam_id},
-                success:function(data)
-                {
-                    $('#exam_subject_id').html(data);
-                }
-            });
-        }
-    });
+    // $('#exam_id').change(function(){
+    //     var exam_id = $('#exam_id').val();
+    //     if(exam_id != '')
+    //     {
+    //         $.ajax({
+    //             url:"exam_subject_question_action.php",
+    //             method:"POST",
+    //             data:{action:'fetch_subject', exam_id:exam_id},
+    //             success:function(data)
+    //             {
+    //                 $('#exam_subject_id').html(data);
+    //             }
+    //         });
+    //     }
+    // });
 
 	$('#add_exam_subject_question').click(function(){
 		
@@ -234,7 +237,7 @@ $(document).ready(function(){
 
         $('#exam_id').attr('disabled', false);
 
-        $('#exam_subject_id').attr('disabled', false);
+        // $('#exam_subject_id').attr('disabled', false);
 
 	});
 
@@ -301,11 +304,11 @@ $(document).ready(function(){
 
 	      	success:function(data)
 	      	{
-                $('#exam_id').val(data.exam_id);
-
-                $('#exam_subject_id').html('<option value="">Select Course</option><option value="'+data.exam_subject_id+'">'+data.subject_name+'</option>');
-
-                $('#exam_subject_id').val(data.exam_subject_id);
+                // $('#exam_id').val(data.exam_id);
+                //
+                // $('#exam_subject_id').html('<option value="">Select Course</option><option value="'+data.exam_subject_id+'">'+data.subject_name+'</option>');
+                //
+                // $('#exam_subject_id').val(data.exam_subject_id);
 
 	        	$('#exam_subject_question_title').val(data.exam_subject_question_title);
 

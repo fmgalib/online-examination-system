@@ -73,7 +73,7 @@ if(isset($_POST["action"]))
 			$sub_array = array();
 			$sub_array[] = html_entity_decode($row["exam_title"]);
 			$sub_array[] = html_entity_decode($row["subject_name"]);
-			$sub_array[] = $row["subject_exam_datetime"];
+			$sub_array[] = date('d-M-Y, h:i a', strtotime($row["subject_exam_datetime"]));
 			$sub_array[] = $row["subject_total_question"] . ' Question';
 			$sub_array[] = $row["marks_per_right_answer"] . ' Mark';
 			$sub_array[] = '-' . $row["marks_per_wrong_answer"] . ' Mark';
@@ -84,7 +84,7 @@ if(isset($_POST["action"]))
 			&nbsp;
 			<button type="button" name="delete_button" class="btn btn-danger  btn-sm delete_button" data-id="'.$row["exam_subject_id"].'"><i class="fas fa-times"></i></button>
 			
-			<a href="exam_subject_question.php?exam_id='.$row["exam_id"].'" type="button" name="open_questions_button" class="btn btn-primary  btn-sm open_questions_button">Questions</a>
+			<a href="exam_subject_question.php?exam_id='.$row["exam_id"].'&exam_title='.$row["exam_title"].'&subject_name='.$row["subject_name"].'" type="button" name="open_questions_button" class="btn btn-primary  btn-sm open_questions_button">Questions</a>
 			</div>
 			';
 			$data[] = $sub_array;

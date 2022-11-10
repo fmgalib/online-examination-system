@@ -213,7 +213,7 @@ if(isset($_POST["action"]))
 
 			$sub_array[] = $status;
 
-			$sub_array[] = $row["exam_created_on"];
+			$sub_array[] = date('d-M-Y, h:i a', strtotime($row["exam_created_on"]));
 
 			$sub_array[] = $action_button; 
 

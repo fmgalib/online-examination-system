@@ -30,7 +30,7 @@ include('header.php');
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Exam Management</h1>
-                    <?php echo date('Y-m-d H:i:s'); ?>
+<!--                    --><?php //echo date('Y-m-d H:i:s'); ?>
                     <!-- DataTales Example -->
                     <span id="message"></span>
                     <div class="card shadow mb-4">
@@ -104,14 +104,15 @@ include('header.php');
                     </div>!-->
                     <div class="form-group">
                         <label>Exam Duration for Each Course <span class="text-danger">*</span></label>
-                        <select name="exam_duration" id="exam_duration" class="form-control" required>
-                            <option value="">Select</option>
-                            <option value="5">5 Minute</option>
-                            <option value="30">30 Minute</option>
-                            <option value="60">1 Hour</option>
-                            <option value="120">2 Hour</option>
-                            <option value="180">3 Hour</option>
-                        </select>
+<!--                        <select name="exam_duration" id="exam_duration" class="form-control" required>-->
+<!--                            <option value="">Select</option>-->
+<!--                            <option value="5">5 Minutes</option>-->
+<!--                            <option value="10">10 Minutes</option>-->
+<!--                            <option value="15">15 Minutes</option>-->
+<!--                            <option value="20">20 Minutes</option>-->
+<!--                            <option value="25">25 Minutes</option>-->
+<!--                        </select>-->
+                        <input type="number" name="exam_duration" id="exam_duration" class="form-control" placeholder="Enter in minutes" required>
                     </div>
                     <div class="form-group" id="ifedit">
 

@@ -64,7 +64,7 @@ if(isset($_POST["action"]))
 			$sub_array = array();
 			//$sub_array[] = html_entity_decode($row["class_name"]);
 			$sub_array[] = html_entity_decode($row["subject_name"]);
-			$sub_array[] = $row["subject_created_on"];
+			$sub_array[] = date('d-M-Y, h:i a', strtotime( $row["subject_created_on"]));
 			$status = '';
 			if($row["subject_status"] == 'Enable')
 			{
