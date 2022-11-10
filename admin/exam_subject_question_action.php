@@ -70,8 +70,8 @@ if(isset($_POST["action"]))
 		foreach($result as $row)
 		{
 			$sub_array = array();
-			$sub_array[] = html_entity_decode($row["exam_title"]);
-			$sub_array[] = html_entity_decode($row["subject_name"]);
+//			$sub_array[] = html_entity_decode($row["exam_title"]);
+//			$sub_array[] = html_entity_decode($row["subject_name"]);
 			$sub_array[] = $row["exam_subject_question_title"];
 			$sub_array[] = $object->Get_question_option_data($row['exam_subject_question_id'], 1);
 			$sub_array[] = $object->Get_question_option_data($row['exam_subject_question_id'], 2);

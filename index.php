@@ -17,7 +17,7 @@ include('header.php');
 
 
 		      	<h3 class="text-center">Welcome</h3>
-		      	<p class="text-center">If you are not logged into the system, click <a href="login.php">here</a></p>
+		      	<p class="text-center">If you are not logged into the system, click <a href="login.php" class="btn btn-dark btn-sm text-white">here</a></p>
 		      	<div class="container">
 			      	<div class="card mt-4 mb-4" style="opacity: 50%">
 			      		<div class="card-header">Latest News</div>

@@ -42,7 +42,7 @@ if(isset($_POST['page']))
 					{
 						if($row["student_status"] == 'Enable')
 						{
-							if($_POST["student_password"] == $row["student_password"])
+							if(sha1($_POST["student_password"]) ==  $row["student_password"])
 							{
 								$_SESSION['student_id'] = $row['student_id'];
 								$url = $object->base_url . 'exam.php';

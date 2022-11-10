@@ -120,7 +120,7 @@ include('header.php');
 
                                             $status = '<span class="badge badge-primary">Started</span>';
 
-                                            $action_button = '<button type="button" class="btn btn-primary btn-sm view_subject_exam" data-ec="'.$ec.'" data-esc="'.$row["subject_exam_code"].'"><i class="fas fa-pencil-alt"></i></button>';
+                                            $action_button = '<button type="button" class="btn btn-primary btn-sm view_subject_exam" data-ec="'.$ec.'" data-esc="'.$row["subject_exam_code"].'"><i class="fas fa-pencil-alt"></i> Start Exam</button>';
                                         }
                                         else
                                         {
