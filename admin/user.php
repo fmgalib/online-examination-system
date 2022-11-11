@@ -45,7 +45,7 @@ include('header.php');
                                             <th>User Name</th>
                                             <th>User Contact No.</th>
                                             <th>User Email</th>
-                                            <th>User Password</th>
+<!--                                            <th>User Password</th>-->
                                             <th>Created On</th>
                                             <th>Status</th>          
                                             <th>Action</th>
@@ -142,7 +142,7 @@ $(document).ready(function(){
 		},
 		"columnDefs":[
 			{
-				"targets":[0, 4, 7],
+				"targets":[0, 4],
 				"orderable":false,
 			},
 		],

@@ -38,7 +38,7 @@ if(isset($_POST["user_email"]))
 		{
 			if($row["user_status"] == 'Enable')
 			{
-				if($_POST["user_password"] == $row["user_password"])
+				if(sha1($_POST["user_password"]) == $row["user_password"])
 				{
 					$_SESSION['user_id'] = $row['user_id'];
 					$_SESSION['user_type'] = $row['user_type'];
@@ -48,7 +48,8 @@ if(isset($_POST["user_email"]))
 					}
 					else
 					{
-						$url = $object->base_url . 'admin/result.php';
+//						$url = $object->base_url . 'admin/result.php';
+                        $url = $object->base_url . 'admin/dashboard.php';
 					}
 				}
 				else

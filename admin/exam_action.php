@@ -80,7 +80,7 @@ if(isset($_POST["action"]))
 			}
 			else
 			{
-				$exam_result_datetime = $row['exam_result_datetime'];
+				$exam_result_datetime = date('d-M-Y, h:i a', strtotime($row["exam_result_datetime"]));
 			}
 
 			$sub_array[] = $exam_result_datetime;
