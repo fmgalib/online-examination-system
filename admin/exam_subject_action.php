@@ -84,7 +84,7 @@ if(isset($_POST["action"]))
 			&nbsp;
 			<button type="button" name="delete_button" class="btn btn-danger  btn-sm delete_button" data-id="'.$row["exam_subject_id"].'"><i class="fas fa-times"></i></button>
 			
-			<a href="exam_subject_question.php?exam_id='.$row["exam_id"].'&exam_title='.$row["exam_title"].'&subject_name='.$row["subject_name"].'" type="button" name="open_questions_button" class="btn btn-primary  btn-sm open_questions_button">Questions</a>
+			<a href="exam_subject_question.php?exam_id='.$row["exam_id"].'&exam_subject_id='.$row["exam_subject_id"].'&exam_title='.$row["exam_title"].'&subject_name='.$row["subject_name"].'" type="button" name="open_questions_button" class="btn btn-primary  btn-sm open_questions_button">Questions</a>
 			</div>
 			';
 			$data[] = $sub_array;

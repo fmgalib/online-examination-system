@@ -74,8 +74,8 @@ if(isset($_POST["action"]))
 			$sub_array[] = html_entity_decode($row["user_name"]);
 			$sub_array[] = $row["user_contact_no"];
 			$sub_array[] = $row["user_email"];
-			$sub_array[] = $row["user_password"];
-			$sub_array[] = $row["user_created_on"];
+//			$sub_array[] = $row["user_password"];
+			$sub_array[] = date('d-M-Y, h:i a', strtotime( $row["user_created_on"]));
 			$status = '';
 			$delete_button = '';
 			if($row["user_status"] == 'Enable')
@@ -146,7 +146,7 @@ if(isset($_POST["action"]))
 				':user_name'		=>	$_POST["user_name"],
 				':user_contact_no'	=>	$_POST["user_contact_no"],
 				':user_email'		=>	$_POST["user_email"],
-				':user_password'	=>	$_POST["user_password"],
+				':user_password'	=>	sha1($_POST["user_password"]),
 				':user_profile'		=>	$user_image,
 				':user_type'		=>	'User',
 				':user_status'		=>	'Enable',
@@ -232,7 +232,7 @@ if(isset($_POST["action"]))
 				':user_name'		=>	$_POST["user_name"],
 				':user_contact_no'	=>	$_POST["user_contact_no"],
 				':user_email'		=>	$_POST["user_email"],
-				':user_password'	=>	$_POST["user_password"],
+				':user_password'	=>	sha1($_POST["user_password"]),
 				':user_profile'		=>	$user_image
 			);
 
@@ -316,7 +316,7 @@ if(isset($_POST["action"]))
 				':user_name'		=>	$_POST['user_name'],
 				':user_contact_no'	=>	$_POST['user_contact_no'],
 				':user_email'		=>	$_POST['user_email'],
-				':user_password'	=>	$_POST['user_password'],
+				':user_password'	=>	sha1($_POST['user_password']),
 				':user_profile'		=>	$user_image
 			);
 
@@ -341,7 +341,7 @@ if(isset($_POST["action"]))
 			'user_name'			=>	$_POST["user_name"],
 			'user_contact_no'	=>	$_POST["user_contact_no"],
 			'user_email'		=>	$_POST["user_email"],
-			'user_password'		=>	$_POST["user_password"],
+			'user_password'		=>	sha1($_POST['user_password']),
 			'user_profile'		=>	$user_image
 		);
 

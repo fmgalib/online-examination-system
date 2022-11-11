@@ -53,7 +53,7 @@ $result = $object->get_result();
                                             <th>Examinee Name</th>
                                             <th>Examinee Address</th>
                                             <th>Email Address</th>
-                                            <th>Password</th>
+<!--                                            <th>Password</th>-->
                                             <th>Gender</th>
                                             <th>Date of Birth</th>
                                             <th>Added By</th>
@@ -96,10 +96,10 @@ $result = $object->get_result();
                         <label>Examinee Email</label>
                         <input type="text" name="student_email_id" id="student_email_id" class="form-control" required data-parsley-type="email" data-parsley-trigger="keyup" />
                     </div>
-                    <div class="form-group">
-                        <label>Examinee Password</label>
-                        <input type="password" name="student_password" id="student_password" class="form-control" required  data-parsley-trigger="keyup" />
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label>Examinee Password</label>-->
+<!--                        <input type="password" name="student_password" id="student_password" class="form-control" required  data-parsley-trigger="keyup" />-->
+<!--                    </div>-->
                     <div class="form-group">
                         <label>Gender</label>
                         <select name="student_gender" id="student_gender" class="form-control">
@@ -147,7 +147,7 @@ $(document).ready(function(){
 		},
 		"columnDefs":[
 			{
-				"targets":[9,10],
+				"targets":[9],
 				"orderable":false,
 			},
 		],

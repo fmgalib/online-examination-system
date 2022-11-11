@@ -127,7 +127,8 @@ if(isset($_GET['ec']))
 
 	$pdf->loadHtml($output);
 	$pdf->render();
-	$pdf->stream($file_name, array("Attachment" => false));
+//	$pdf->stream($file_name, array("Attachment" => false));
+	$pdf->stream($file_name);
 	exit(0);
 
 }

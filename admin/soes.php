@@ -64,7 +64,7 @@ class soes
 	{
 		if(isset($_SESSION['user_type']))
 		{
-			if($_SESSION["user_type"] == 'Master')
+			if($_SESSION["user_type"] == 'Master' || $_SESSION["user_type"] == 'User')
 			{
 				return true;
 			}
