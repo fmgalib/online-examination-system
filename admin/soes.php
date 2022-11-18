@@ -39,6 +39,11 @@ class soes
 		return $this->statement->rowCount();
 	}
 
+    function count($result)
+    {
+        return $this->statement->mysqli_num_rows($result);
+    }
+
 	function statement_result()
 	{
 		return $this->statement->fetchAll();
