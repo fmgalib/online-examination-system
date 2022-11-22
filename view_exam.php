@@ -98,7 +98,7 @@ include('header.php');
 
                                         $start_time = $row["subject_exam_datetime"];
 
-                                        $duration = $object->Get_exam_duration($row["exam_id"]) . ' minute';
+                                        $duration = $object->Get_exam_duration($row["exam_id"]);
 
                                         $end_time = strtotime($start_time . '+' . $duration);
 

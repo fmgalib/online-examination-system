@@ -39,7 +39,6 @@ if(isset($_GET['ec']))
 	<br />
 	<table width="100%" border="1" cellpadding="5" cellspacing="0">
 		<tr>
-			<td>Image</td>
 			<td>Roll No.</td>
 			<td>Examinee Name</td>
 			<th>Total Marks</th>
@@ -108,7 +107,6 @@ if(isset($_GET['ec']))
 
 		$output .= '
 		<tr>
-			<td><img src="'.$student_profile_img.'" width="50" /></td>
 			<td>'.$student_roll_no.'</td>
 			<td>'.$student_name.'</td>
 			<td>'.$stm.'</td>
@@ -123,12 +121,12 @@ if(isset($_GET['ec']))
 
 	$pdf->set_paper('letter', 'landscape');
 
-	$file_name = 'Exam Result.pdf';
+	$file_name = 'Exam-Result.pdf';
 
 	$pdf->loadHtml($output);
 	$pdf->render();
-//	$pdf->stream($file_name, array("Attachment" => false));
-	$pdf->stream($file_name);
+	$pdf->stream($file_name, array("Attachment" => false));
+//	$pdf->stream($file_name);
 	exit(0);
 
 }

@@ -38,7 +38,7 @@ if(isset($_GET["type"], $_GET["code"]))
 		{
 			if($row['student_email_verified'] == 'Yes')
 			{
-				$message = '<div class="alert alert-info"><h2 class="text-center">Hey <b>'.$row["student_name"].'</b> your <b>'.$row["student_email_id"].'</b> email address already verify, so you can login into system by click <a href="login.php">here</a></h2></div>';
+				$message = '<div class="alert alert-info"><h2 class="text-center">Hey <b>'.$row["student_name"].'</b> your <b>'.$row["student_email_id"].'</b> email address already verified, so you can login into system by click <a href="login.php">here</a></h2></div>';
 			}
 			else
 			{
@@ -70,7 +70,8 @@ if(isset($_GET["type"], $_GET["code"]))
 
 				$object->send_email($row["student_email_id"], $subject, $body);
 
-				$message = '<div class="alert alert-success"><h2 class="text-center">Hey <b>'.$row["student_name"].'</b> your <b>'.$row["student_email_id"].'</b> email address has been successfully verify, Password details has been send to <b>'.$row["student_email_id"].'</b></h2></div>';
+				$message = '<div class="alert alert-success"><h3 class="text-center">Hey <b>'.$row["student_name"].', </b> your <b>'.$row["student_email_id"].'</b> email address has been successfully verified. You can login into system by clicking <a href="login.php">here</a></b></h3> <br>
+				</div>';
 			}
 		}
 	}
