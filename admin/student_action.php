@@ -134,12 +134,17 @@ if(isset($_POST["action"]))
 			{
 				$student_image = upload_image();
 			}
+            $pass = '';
+            for ($i = 0; $i<7; $i++)
+            {
+                $pass .= mt_rand(0,9);
+            }
 
 			$data = array(
 				':student_name'			=>	$object->clean_input($_POST["student_name"]),
 				':student_address'		=>	$object->clean_input($_POST["student_address"]),
 				':student_email_id'		=>	$_POST["student_email_id"],
-//				':student_password'		=>	sha1($_POST["student_password"]),
+				':student_password'		=>	sha1($pass),
 				':student_gender'		=>	$_POST["student_gender"],
 				':student_dob'			=>	$_POST["student_dob"],
 				':student_image'		=>	$student_image,
@@ -151,13 +156,44 @@ if(isset($_POST["action"]))
 
 			$object->query = "
 			INSERT INTO student_soes 
-			(student_name, student_address, student_email_id, /*student_password,*/ student_gender, student_dob, student_image, student_status, student_added_by, student_added_on, student_email_verified) 
-			VALUES (:student_name, :student_address, :student_email_id, /*:student_password,*/ :student_gender, :student_dob, :student_image, :student_status, :student_added_by, :student_added_on, :student_email_verified)
+			(student_name, student_address, student_email_id, student_password, student_gender, student_dob, student_image, student_status, student_added_by, student_added_on, student_email_verified) 
+			VALUES (:student_name, :student_address, :student_email_id, :student_password, :student_gender, :student_dob, :student_image, :student_status, :student_added_by, :student_added_on, :student_email_verified)
 			";
 
 			$object->execute($data);
 
 			$success = '<div class="alert alert-success">Examinee Data Added</div>';
+
+            // Email start
+            $verification_code = md5(uniqid());
+            $data2 = array(
+                ':student_email_verification_code'		=>	$verification_code,
+                ':student_email_id'							=>	$_POST["student_email_id"]
+            );
+
+            $object->query = "
+						UPDATE student_soes 
+						SET student_email_verification_code = :student_email_verification_code 
+						WHERE student_email_id = :student_email_id
+						";
+
+            $object->execute($data2);
+
+            require_once('../class/class.phpmailer.php');
+
+            $subject = 'Student Verification Email for Online Exam System';
+
+            $body = '
+						<p>Hello '.$_POST["student_name"].'.</p>
+						<p>This is a verification eMail for your '.$_POST["student_email_id"].' email address, and without email verification you can not take part in online exam, So please click the link to verify your eMail address by clicking this <a href="'.$object->base_url.'verify_email.php?type=student&code='.$verification_code.'" target="_blank"><b>link</b></a>.</p>
+						<p>Your password is: <b>'.$pass.'</b></p>
+						<p>In case if you have any difficulty please eMail us.</p>
+						<p>Thank you,</p>
+						<p>Online Student Exam System</p>
+						';
+
+            $object->send_email($_POST["student_email_id"], $subject, $body);
+            // Email end
 		}
 
 		$output = array(

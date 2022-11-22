@@ -331,40 +331,42 @@ class soes
 		}
 	}
 
-	function send_email($receiver_email, $subject, $body)
-	{
-		$mail = new PHPMailer;
+    function send_email($receiver_email, $subject, $body)
+    {
+        $mail = new PHPMailer;
 
-		$mail->IsSMTP();
+//        $mail->SMTPDebug = 3;
 
-		$mail->Host = 'smtp.gmail.com'; //Define your Email Host Name
+        $mail->IsSMTP();
 
-		$mail->Port = '465';
+        $mail->Host = 'smtp.gmail.com'; //Define your Email Host Name
 
-		$mail->SMTPAuth = true;
+        $mail->Port = '587';
 
-		$mail->Username = 'OES'; //Define your Email Username
+        $mail->SMTPAuth = true;
 
-		$mail->Password = 'dhbuiijzcgmqjdms'; //Define your Email Password
+        $mail->Username = 'oes.system.bit@gmail.com'; //Define your Email Username
 
-		$mail->SMTPSecure = 'ssl';
+        $mail->Password = 'zlzzzwxfbxlshtvd'; //Define your Email Password
 
-		$mail->From = 'petcare261@gmail.com';
-		
-		$mail->FromName = 'Online-Examination-System';
+        $mail->SMTPSecure = 'tls';
 
-		$mail->AddAddress($receiver_email, '');
+        $mail->From = 'oes.system.bit@gmail.com';
 
-		$mail->WordWrap = 50;      
-		
-		$mail->IsHTML(true);
+        $mail->FromName = 'Online-Examination-System';
 
-		$mail->Course = $subject;
+        $mail->AddAddress($receiver_email, '');
 
-		$mail->Body = $body;
+        $mail->WordWrap = 50;
 
-		$mail->Send();
-	}
+        $mail->IsHTML(true);
+
+        $mail->Course = $subject;
+
+        $mail->Body = $body;
+
+        $mail->Send();
+    }
 
 	
 	function Get_total_classes()

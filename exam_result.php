@@ -120,7 +120,7 @@ if(isset($_GET['ec']))
 
 	$pdf->set_paper('letter', 'A4');
 
-	$file_name = 'Exam Result.pdf';
+	$file_name = 'Exam-Result.pdf';
 
 	$pdf->loadHtml($output);
 	$pdf->render();
